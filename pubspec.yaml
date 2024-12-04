@@ -6,7 +6,8 @@ funding:
  - https://github.com/sponsors/rbellens
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.3.3 <4.0.0'
+  flutter: ">=3.24.5"
 
 dependencies:
   jose: ^0.3.2

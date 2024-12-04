@@ -3,6 +3,7 @@ library openid.model;
 import 'package:jose/src/util.dart';
 import 'package:jose/jose.dart';
 import 'package:clock/clock.dart';
+import 'package:meta/meta.dart';
 
 part 'model/metadata.dart';
 
