@@ -258,9 +258,6 @@ class Credential {
       return _token;
     }
 
-    print('========== getTokenResponse ===========');
-    print('${_token.refreshToken}');
-    print('=======================================');
     var json = await http.post(client.issuer.tokenEndpoint,
         body: {
           'grant_type': 'refresh_token',
@@ -281,10 +278,7 @@ class Credential {
   /// used to update the token manually, e.g. when no refresh token is available
   /// and the token is updated by other means.
   void updateToken(Map<String, dynamic> json) {
-    //_token = TokenResponse.fromJson({'refresh_token': _token.refreshToken, ...json});
-    print('========== Update Token ===========');
-    print(JsonEncoder.withIndent('   ').convert(json));
-    print('===================================');
+    //_token = TokenResponse.fromJson({'refresh_token': _token.refreshToken, ...json});    
     _token = TokenResponse.fromJson(json);
     _onTokenChanged.add(_token);
   }
