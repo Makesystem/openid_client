@@ -258,8 +258,16 @@ class Credential {
       return _token;
     }
 
+    print('========== getTokenResponse ===========');
+    print('${_token.refreshToken}');
+    print('=======================================');
     var json = await http.post(client.issuer.tokenEndpoint,
-        body: {'grant_type': 'refresh_token', 'refresh_token': _token.refreshToken, 'client_id': client.clientId, if (client.clientSecret != null) 'client_secret': client.clientSecret},
+        body: {
+          'grant_type': 'refresh_token',
+          'refresh_token': _token.refreshToken,
+          'client_id': client.clientId,
+          if (client.clientSecret != null) 'client_secret': client.clientSecret,
+        },
         client: client.httpClient);
 
     updateToken(json);
@@ -282,10 +290,24 @@ class Credential {
   }
 
   Credential.fromJson(Map<String, dynamic> json, {http.Client? httpClient})
-      : this._(Client(Issuer(OpenIdProviderMetadata.fromJson((json['issuer'] as Map).cast())), json['client_id'], clientSecret: json['client_secret'], httpClient: httpClient),
-            TokenResponse.fromJson((json['token'] as Map).cast()), json['nonce']);
+      : this._(
+          Client(
+            Issuer(OpenIdProviderMetadata.fromJson((json['issuer'] as Map).cast())),
+            json['client_id'],
+            clientSecret: json['client_secret'],
+            httpClient: httpClient,
+          ),
+          TokenResponse.fromJson((json['token'] as Map).cast()),
+          json['nonce'],
+        );
 
-  Map<String, dynamic> toJson() => {'issuer': client.issuer.metadata.toJson(), 'client_id': client.clientId, 'client_secret': client.clientSecret, 'token': _token.toJson(), 'nonce': nonce};
+  Map<String, dynamic> toJson() => {
+        'issuer': client.issuer.metadata.toJson(),
+        'client_id': client.clientId,
+        'client_secret': client.clientSecret,
+        'token': _token.toJson(),
+        'nonce': nonce,
+      };
 }
 
 extension _IssuerX on Issuer {
