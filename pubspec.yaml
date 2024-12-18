@@ -7,12 +7,12 @@ funding:
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
-  flutter: ">=3.24.5"
+  flutter:
 
 dependencies:
   jose: ^0.3.2
   pointycastle: ^3.0.0
-  http: ">=0.13.5 <2.0.0"
+  http: ^1.2.2
   logging: ^1.0.0
   args: ^2.0.0
   meta: ^1.0.0
@@ -20,7 +20,7 @@ dependencies:
 
 dev_dependencies:
   test: ^1.16.5
-  lints: ^2.0.1
+  lints: ^5.1.0
 
 executables:
   openid_client: openid_client
