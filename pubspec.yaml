@@ -10,17 +10,16 @@ environment:
   flutter:
 
 dependencies:
-  jose: ^0.3.2
-  pointycastle: ^3.0.0
-  http: ^1.2.2
-  logging: ^1.0.0
-  args: ^2.0.0
-  meta: ^1.0.0
-  clock: ^1.1.0
+  jose:
+  pointycastle:
+  http:
+  logging:
+  args:
+  meta:
+  clock:
 
 dev_dependencies:
-  test: ^1.16.5
-  lints: ^5.1.0
+  flutter_lints:
 
 executables:
   openid_client: openid_client
